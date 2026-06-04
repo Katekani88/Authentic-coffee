@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authentic Coffee</title>
+<link rel="icon" type="image/jpeg" href="coffee white logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF6F0;
+    --cream-dark: #F0E8DC;
+    --espresso: #2C1A0E;
+    --brown-mid: #6B3F1E;
+    --brown-light: #A0622C;
+    --warm-gray: #8C7B6D;
+    --gold: #C8902A;
+    --gold-light: #E8B84B;
+    --white: #FFFFFF;
+    --text-primary: #1E1008;
+    --text-secondary: #5A3E2C;
+    --section-gap: 100px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(28, 14, 6, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200, 144, 42, 0.18);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .nav-logo img {
+    height: 72px;
+    width: auto;
+    filter: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(250, 246, 240, 0.75);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--cream); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--espresso) !important;
+    padding: 10px 24px;
+    border-radius: 6px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--espresso) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 60px 80px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(200, 144, 42, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1.5px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 5vw, 72px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--espresso);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--brown-light);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--espresso);
+    color: var(--cream);
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--brown-mid); transform: translateY(-1px); }
+
+  .btn-outline {
+    color: var(--espresso);
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1.5px solid var(--espresso);
+    transition: background 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { background: var(--espresso); color: var(--cream); }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-circle {
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    background: var(--cream-dark);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .coffee-cup-svg { width: 260px; height: 260px; }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 40px;
+    right: -20px;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 32px rgba(44, 26, 14, 0.12);
+    min-width: 140px;
+  }
+
+  .hero-badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--espresso);
+    line-height: 1;
+  }
+
+  .hero-badge-label {
+    font-size: 12px;
+    color: var(--warm-gray);
+    margin-top: 4px;
+  }
+
+  .hero-badge2 {
+    position: absolute;
+    top: 60px;
+    left: -20px;
+    background: var(--espresso);
+    border-radius: 14px;
+    padding: 14px 18px;
+    min-width: 120px;
+  }
+
+  .hero-badge2 .hero-badge-num { color: var(--gold-light); font-size: 22px; }
+  .hero-badge2 .hero-badge-label { color: rgba(250,246,240,0.7); }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--espresso);
+    padding: 40px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 0 20px;
+    border-right: 1px solid rgba(250,246,240,0.1);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: rgba(250,246,240,0.6);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* SECTION SHARED */
+  section { padding: var(--section-gap) 60px; }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3vw, 48px);
+    font-weight: 600;
+    color: var(--espresso);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* ABOUT */
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+  }
+
+  .about-img-main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--cream-dark);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .about-img-overlay {
+    position: absolute;
+    bottom: -24px;
+    right: -24px;
+    width: 180px;
+    height: 180px;
+    background: var(--gold);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .about-img-overlay strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--espresso);
+    line-height: 1;
+  }
+
+  .about-img-overlay span {
+    font-size: 13px;
+    color: var(--espresso);
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+
+  .about-features {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-feature {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    background: var(--cream-dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-feature h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--espresso);
+    margin-bottom: 4px;
+  }
+
+  .about-feature p {
+    font-size: 14px;
+    color: var(--warm-gray);
+    line-height: 1.5;
+  }
+
+  /* MENU */
+  .menu { background: var(--white); }
+
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+  }
+
+  .menu-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--cream);
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 48px;
+  }
+
+  .menu-tab {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--warm-gray);
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .menu-tab.active {
+    background: var(--espresso);
+    color: var(--cream);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .menu-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--cream);
+    transition: transform 0.2s;
+  }
+
+  .menu-card:hover { transform: translateY(-4px); }
+
+  .menu-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--cream-dark);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .menu-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .menu-card:hover .menu-card-img img {
+    transform: scale(1.06);
+  }
+
+  .menu-card-body { padding: 20px; }
+
+  .menu-card-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .menu-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--espresso);
+    margin-bottom: 6px;
+  }
+
+  .menu-card-desc {
+    font-size: 13px;
+    color: var(--warm-gray);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .menu-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--espresso);
+    font-family: 'Playfair Display', serif;
+  }
+
+  .menu-add-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--espresso);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cream);
+    font-size: 20px;
+    font-weight: 300;
+    transition: background 0.2s;
+    min-width: 36px;
+  }
+
+  .menu-add-btn:hover { background: var(--brown-mid); }
+
+  /* ORIGINS */
+  .origins-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .origin-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .origin-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border: 1px solid rgba(107,63,30,0.08);
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .origin-card:hover, .origin-card.active {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(200, 144, 42, 0.12);
+  }
+
+  .origin-flag {
+    font-size: 32px;
+    min-width: 48px;
+    text-align: center;
+  }
+
+  .origin-info h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--espresso);
+    margin-bottom: 3px;
+  }
+
+  .origin-info p {
+    font-size: 13px;
+    color: var(--warm-gray);
+  }
+
+  .origin-score {
+    margin-left: auto;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .origins-map-side { padding: 20px 0; }
+
+  .origins-map-side p {
+    font-size: 16px;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    margin-top: 20px;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--espresso); }
+  .testimonials .section-title { color: var(--cream); }
+  .testimonials .section-tag { color: var(--gold-light); }
+  .testimonials .section-subtitle { color: rgba(250,246,240,0.6); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .testimonial-card {
+    background: rgba(250,246,240,0.06);
+    border: 1px solid rgba(250,246,240,0.1);
+    border-radius: 16px;
+    padding: 28px;
+  }
+
+  .testimonial-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .star { color: var(--gold-light); font-size: 14px; }
+
+  .testimonial-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(250,246,240,0.85);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--espresso);
+    background: var(--gold-light);
+    min-width: 40px;
+  }
+
+  .author-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--cream);
+  }
+
+  .author-since {
+    font-size: 12px;
+    color: rgba(250,246,240,0.4);
+  }
+
+  /* VISIT */
+  .visit-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .hours-table {
+    margin-top: 28px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .hours-table td {
+    padding: 10px 0;
+    font-size: 15px;
+    border-bottom: 1px solid rgba(107,63,30,0.08);
+  }
+
+  .hours-table td:last-child { text-align: right; font-weight: 500; color: var(--espresso); }
+  .hours-table td:first-child { color: var(--warm-gray); }
+
+  .visit-map-card {
+    background: var(--cream-dark);
+    border-radius: 20px;
+    padding: 32px;
+    height: 100%;
+  }
+
+  .map-placeholder {
+    background: var(--cream);
+    border-radius: 14px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    border: 1px dashed rgba(107,63,30,0.2);
+  }
+
+  .map-icon { font-size: 36px; }
+
+  .map-placeholder p { font-size: 14px; color: var(--warm-gray); }
+
+  .address-block { font-size: 15px; color: var(--text-secondary); line-height: 1.7; }
+  .address-block strong { color: var(--espresso); font-weight: 600; display: block; margin-bottom: 4px; }
+
+  /* NEWSLETTER */
+  .newsletter {
+    background: var(--gold);
+    padding: 80px 60px;
+    text-align: center;
+  }
+
+  .newsletter h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: var(--espresso);
+    margin-bottom: 12px;
+  }
+
+  .newsletter p {
+    font-size: 16px;
+    color: rgba(44,26,14,0.65);
+    margin-bottom: 32px;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.85);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    color: var(--espresso);
+    outline: none;
+  }
+
+  .newsletter-input::placeholder { color: rgba(44,26,14,0.4); }
+
+  .newsletter-input:focus { background: var(--white); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-primary);
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    color: rgba(250,246,240,0.6);
+    font-size: 14px;
+  }
+
+  .footer-brand { }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-tagline { line-height: 1.6; max-width: 240px; }
+
+  .footer-socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(250,246,240,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(250,246,240,0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+
+  .social-btn:hover { background: rgba(250,246,240,0.15); color: var(--cream); }
+
+  .footer-col h5 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col ul a {
+    color: rgba(250,246,240,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 14px;
+  }
+
+  .footer-col ul a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    background: var(--text-primary);
+    padding: 20px 60px;
+    border-top: 1px solid rgba(250,246,240,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(250,246,240,0.3);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    nav { padding: 18px 32px; }
+    .hero { padding: 100px 32px 60px; gap: 40px; }
+    .hero-circle { width: 360px; height: 360px; }
+    section { padding: 70px 32px; }
+    .stats-bar { padding: 36px 32px; }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { padding: 48px 32px; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer-bottom { padding: 16px 32px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; text-align: center; }
+    .hero-desc { margin: 0 auto 32px; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { display: none; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); padding: 32px 24px; gap: 24px; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(250,246,240,0.08); padding-bottom: 20px; }
+    .about-inner, .origins-inner, .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+    section { padding: 60px 24px; }
+    .menu-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .newsletter { padding: 60px 24px; }
+    .newsletter-form { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><img src="coffee white logo.jpeg" alt="Authentic Coffee"></a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#origins">Origins</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#visit" class="nav-cta">Order Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Specialty Coffee</p>
+    <h1>Every Cup Tells<br>a <em>True Story</em></h1>
+    <p class="hero-desc">We source single-origin beans from the world's finest farms, roast them in small batches, and craft each cup with quiet care and intention.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">Explore Menu</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-circle">
+      <svg class="coffee-cup-svg" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Steam -->
+        <path d="M100 60 Q106 44 100 28" stroke="#A0622C" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <path d="M130 54 Q136 38 130 22" stroke="#A0622C" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <path d="M160 60 Q166 44 160 28" stroke="#A0622C" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
+        <!-- Saucer -->
+        <ellipse cx="130" cy="208" rx="90" ry="14" fill="#C8902A" opacity="0.15"/>
+        <ellipse cx="130" cy="204" rx="78" ry="10" fill="#C8902A" opacity="0.25"/>
+        <!-- Cup body -->
+        <path d="M72 100 L86 192 Q87 200 96 200 L164 200 Q173 200 174 192 L188 100 Z" fill="#6B3F1E"/>
+        <!-- Cup rim -->
+        <rect x="68" y="92" width="124" height="14" rx="7" fill="#8B5230"/>
+        <!-- Coffee surface -->
+        <ellipse cx="130" cy="99" rx="56" ry="8" fill="#3D1F08"/>
+        <!-- Foam detail -->
+        <ellipse cx="130" cy="99" rx="40" ry="5" fill="#5A3020" opacity="0.6"/>
+        <!-- Handle -->
+        <path d="M188 120 Q220 120 220 148 Q220 176 188 176" stroke="#8B5230" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <!-- Highlight -->
+        <path d="M90 110 Q88 150 92 180" stroke="rgba(255,255,255,0.08)" stroke-width="8" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="hero-badge">
+        <div class="hero-badge-num">4.9★</div>
+        <div class="hero-badge-label">Customer rating</div>
+      </div>
+      <div class="hero-badge2">
+        <div class="hero-badge-num">12+</div>
+        <div class="hero-badge-label">Origins sourced</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">14</div>
+    <div class="stat-label">Years roasting</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">38+</div>
+    <div class="stat-label">Signature blends</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">12</div>
+    <div class="stat-label">Origins worldwide</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">24K</div>
+    <div class="stat-label">Happy regulars</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap">
+      <div class="about-img-main">
+        <svg viewBox="0 0 320 380" width="280" height="330" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Roaster illustration -->
+          <rect x="60" y="140" width="200" height="160" rx="16" fill="#6B3F1E"/>
+          <rect x="80" y="120" width="160" height="30" rx="8" fill="#8B5230"/>
+          <circle cx="130" cy="200" r="40" fill="#2C1A0E"/>
+          <circle cx="130" cy="200" r="28" fill="#3D1F08"/>
+          <circle cx="130" cy="200" r="14" fill="#6B3F1E"/>
+          <rect x="240" y="160" width="30" height="80" rx="8" fill="#8B5230"/>
+          <circle cx="255" cy="152" r="12" fill="#A0622C"/>
+          <rect x="80" y="280" width="24" height="20" rx="4" fill="#5A3020"/>
+          <rect x="148" y="280" width="24" height="20" rx="4" fill="#5A3020"/>
+          <rect x="216" y="280" width="24" height="20" rx="4" fill="#5A3020"/>
+          <!-- Beans falling -->
+          <ellipse cx="180" cy="80" rx="10" ry="14" fill="#2C1A0E" transform="rotate(-20 180 80)"/>
+          <ellipse cx="200" cy="60" rx="8" ry="12" fill="#3D1F08" transform="rotate(10 200 60)"/>
+          <ellipse cx="160" cy="100" rx="9" ry="13" fill="#2C1A0E" transform="rotate(-5 160 100)"/>
+          <path d="M178 73 Q180 80 182 73" stroke="#6B3F1E" stroke-width="1.5" fill="none"/>
+          <path d="M198 53 Q200 60 202 53" stroke="#6B3F1E" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <div class="about-img-overlay">
+        <strong>2010</strong>
+        <span>Year founded</span>
+      </div>
+    </div>
+    <div>
+      <p class="section-tag">Our Story</p>
+      <h2 class="section-title">Born from a love of genuine craft</h2>
+      <p class="section-subtitle">Authentic Coffee started with one small roaster and a belief that great coffee deserves to be understood — not just consumed. Today we roast every batch in-house and build direct relationships with the farmers who grow our beans.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="feature-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
+              <circle cx="11" cy="11" r="9" stroke="#C8902A" stroke-width="1.5"/>
+              <path d="M7 11 L10 14 L15 8" stroke="#C8902A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Direct trade sourcing</h4>
+            <p>We visit every farm we work with, ensuring fair pay and sustainable practices at the source.</p>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="feature-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
+              <path d="M11 3 L11 19 M3 11 L19 11" stroke="#C8902A" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="11" cy="11" r="4" stroke="#C8902A" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Small-batch roasting</h4>
+            <p>Every roast is done in batches under 15kg, giving us precise control over flavour development.</p>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="feature-icon">
+            <svg width="22" height="22" fill="none" viewBox="0 0 22 22">
+              <path d="M4 17 Q11 6 18 17" stroke="#C8902A" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="11" cy="8" r="3" stroke="#C8902A" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Community-rooted</h4>
+            <p>We partner with local schools, host monthly cuppings, and keep our community at the centre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="menu-header">
+    <div>
+      <p class="section-tag">What we serve</p>
+      <h2 class="section-title">Our menu</h2>
+    </div>
+    <a href="Coffee shop Menu.pdf" target="_blank" class="btn-outline">Full menu ↗</a>
+  </div>
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="filterMenu('espresso', this)">Espresso</button>
+    <button class="menu-tab" onclick="filterMenu('filter', this)">Filter</button>
+    <button class="menu-tab" onclick="filterMenu('cold', this)">Cold Brew</button>
+    <button class="menu-tab" onclick="filterMenu('food', this)">Food</button>
+  </div>
+  <div class="menu-grid" id="menu-grid">
+    <!-- Cards injected by JS -->
+  </div>
+</section>
+
+<!-- ORIGINS -->
+<section id="origins">
+  <div class="origins-inner">
+    <div>
+      <p class="section-tag">Where it begins</p>
+      <h2 class="section-title">Beans from the world's finest farms</h2>
+      <p class="section-subtitle">We work closely with smallholder farmers across four continents, paying above fair-trade rates and visiting each farm at least once per harvest.</p>
+      <div class="origin-cards" style="margin-top: 36px;">
+        <div class="origin-card active">
+          <div class="origin-flag">🇪🇹</div>
+          <div class="origin-info">
+            <h4>Yirgacheffe, Ethiopia</h4>
+            <p>Floral, bergamot, stone fruit</p>
+          </div>
+          <div class="origin-score">94</div>
+        </div>
+        <div class="origin-card">
+          <div class="origin-flag">🇨🇴</div>
+          <div class="origin-info">
+            <h4>Huila, Colombia</h4>
+            <p>Red apple, caramel, dark chocolate</p>
+          </div>
+          <div class="origin-score">92</div>
+        </div>
+        <div class="origin-card">
+          <div class="origin-flag">🇯🇲</div>
+          <div class="origin-info">
+            <h4>Blue Mountain, Jamaica</h4>
+            <p>Mild, sweet, clean finish</p>
+          </div>
+          <div class="origin-score">91</div>
+        </div>
+        <div class="origin-card">
+          <div class="origin-flag">🇮🇩</div>
+          <div class="origin-info">
+            <h4>Sumatra, Indonesia</h4>
+            <p>Earthy, cedar, dark cocoa</p>
+          </div>
+          <div class="origin-score">90</div>
+        </div>
+      </div>
+    </div>
+    <div class="origins-map-side">
+      <svg viewBox="0 0 420 360" width="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Simplified world map silhouette -->
+        <rect width="420" height="360" rx="16" fill="#F0E8DC"/>
+        <!-- Africa -->
+        <path d="M180 80 Q200 60 220 80 Q240 100 230 160 Q220 200 200 220 Q180 200 170 160 Q160 120 180 80Z" fill="#C8902A" opacity="0.35"/>
+        <!-- Europe -->
+        <path d="M155 40 Q180 30 195 50 Q200 70 180 75 Q160 70 150 55 Z" fill="#A0622C" opacity="0.3"/>
+        <!-- Americas -->
+        <path d="M60 60 Q90 50 100 80 Q110 110 90 160 Q70 200 50 180 Q30 150 40 100 Z" fill="#A0622C" opacity="0.3"/>
+        <path d="M75 170 Q95 165 100 190 Q100 230 80 240 Q60 230 60 200 Z" fill="#A0622C" opacity="0.25"/>
+        <!-- Asia -->
+        <path d="M240 50 Q310 30 350 60 Q370 80 350 110 Q320 130 280 120 Q250 110 235 85 Z" fill="#A0622C" opacity="0.3"/>
+        <!-- Indonesia blob -->
+        <ellipse cx="340" cy="160" rx="30" ry="12" fill="#A0622C" opacity="0.3" transform="rotate(-10 340 160)"/>
+        <!-- Australia -->
+        <ellipse cx="340" cy="230" rx="36" ry="26" fill="#A0622C" opacity="0.2"/>
+
+        <!-- Pin - Ethiopia -->
+        <circle cx="208" cy="148" r="10" fill="#C8902A"/>
+        <circle cx="208" cy="148" r="5" fill="#FAF6F0"/>
+        <circle cx="208" cy="148" r="16" stroke="#C8902A" stroke-width="1.5" opacity="0.3"/>
+
+        <!-- Pin - Colombia -->
+        <circle cx="82" cy="145" r="8" fill="#6B3F1E"/>
+        <circle cx="82" cy="145" r="4" fill="#FAF6F0"/>
+
+        <!-- Pin - Jamaica -->
+        <circle cx="72" cy="120" r="7" fill="#6B3F1E"/>
+        <circle cx="72" cy="120" r="3.5" fill="#FAF6F0"/>
+
+        <!-- Pin - Sumatra -->
+        <circle cx="336" cy="158" r="8" fill="#6B3F1E"/>
+        <circle cx="336" cy="158" r="4" fill="#FAF6F0"/>
+
+        <!-- Label Ethiopia (active) -->
+        <rect x="168" y="118" width="80" height="24" rx="6" fill="#2C1A0E"/>
+        <text x="208" y="134" font-family="Inter, sans-serif" font-size="11" fill="#FAF6F0" text-anchor="middle" font-weight="500">Yirgacheffe</text>
+
+        <!-- Connecting lines -->
+        <line x1="208" y1="148" x2="82" y2="145" stroke="#C8902A" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"/>
+        <line x1="208" y1="148" x2="72" y2="120" stroke="#C8902A" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"/>
+        <line x1="208" y1="148" x2="336" y2="158" stroke="#C8902A" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"/>
+      </svg>
+      <p>Our sourcing team travels the world to find exceptional lots — often from farmers no larger than a few acres — who put the same care into growing as we put into roasting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div style="text-align:center; max-width:560px; margin:0 auto;">
+    <p class="section-tag">What people say</p>
+    <h2 class="section-title">Regulars who found their cup</h2>
+    <p class="section-subtitle">We've been the first stop of the morning for thousands of people. Here's a few of them.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"I've been coming here every morning for three years. The Ethiopian pour-over changed how I think about coffee entirely."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">SR</div>
+        <div>
+          <div class="author-name">Sipho R.</div>
+          <div class="author-since">Regular since 2021</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"The baristas here actually know their craft. They'll walk you through the tasting notes without making you feel like you should already know."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">NV</div>
+        <div>
+          <div class="author-name">Naledi V.</div>
+          <div class="author-since">Regular since 2022</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"I ordered beans online and they arrived roasted to order — still warm, nearly. The Sumatran dark roast is my weekend ritual now."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">TM</div>
+        <div>
+          <div class="author-name">Thabo M.</div>
+          <div class="author-since">Online customer since 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="visit-inner">
+    <div>
+      <p class="section-tag">Find us</p>
+      <h2 class="section-title">Come in for a cup</h2>
+      <p class="section-subtitle">We're nestled on a quiet corner in the heart of the city. Walk-ins always welcome — no app, no queue number.</p>
+      <table class="hours-table">
+        <tbody>
+          <tr><td>Monday – Friday</td><td>7:00 am – 6:00 pm</td></tr>
+          <tr><td>Saturday</td><td>8:00 am – 5:00 pm</td></tr>
+          <tr><td>Sunday</td><td>9:00 am – 3:00 pm</td></tr>
+          <tr><td>Public holidays</td><td>10:00 am – 2:00 pm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="visit-map-card">
+      <div class="map-placeholder">
+        <div class="map-icon">📍</div>
+        <p>14 Rosebank Lane, Johannesburg</p>
+      </div>
+      <div class="address-block">
+        <strong>Authentic Coffee — Rosebank</strong>
+        14 Rosebank Lane, Rosebank<br>
+        Johannesburg, 2196<br><br>
+        <a href="tel:+27110001234" style="color: var(--gold); text-decoration: none;">+27 11 000 1234</a><br>
+        <a href="mailto:hello@authenticcoffee.co.za" style="color: var(--gold); text-decoration: none;">hello@authenticcoffee.co.za</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>Stay in the loop</h2>
+  <p>New origins, seasonal blends, and cupping events — straight to your inbox.</p>
+  <div class="newsletter-form">
+    <input class="newsletter-input" type="email" placeholder="Your email address" aria-label="Email address">
+    <button class="btn-primary" type="button" style="white-space:nowrap;">Subscribe</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo"><img src="coffee white logo.jpeg" alt="Authentic Coffee" style="height:52px; width:auto; filter: brightness(0) invert(1);"></div>
+    <p class="footer-tagline">Roasted with intention. Served with honesty. Enjoyed one cup at a time.</p>
+    <div class="footer-socials">
+      <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+      <a href="#" class="social-btn" aria-label="Facebook">fb</a>
+      <a href="#" class="social-btn" aria-label="Twitter">tw</a>
+    </div>
+  </div>
+  <div class="footer-col">
+    <h5>Menu</h5>
+    <ul>
+      <li><a href="Coffee shop Menu.pdf" target="_blank">Full menu (PDF)</a></li>
+      <li><a href="#">Filter coffee</a></li>
+      <li><a href="#">Cold brew</a></li>
+      <li><a href="#">Food & pastries</a></li>
+      <li><a href="#">Beans to take home</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Company</h5>
+    <ul>
+      <li><a href="#">Our story</a></li>
+      <li><a href="#">Origins & sourcing</a></li>
+      <li><a href="#">Sustainability</a></li>
+      <li><a href="#">Press</a></li>
+      <li><a href="#">Careers</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h5>Connect</h5>
+    <ul>
+      <li><a href="#">Events & cuppings</a></li>
+      <li><a href="#">Wholesale</a></li>
+      <li><a href="#">Gift cards</a></li>
+      <li><a href="#">Contact us</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Authentic Coffee. All rights reserved.</span>
+  <span>Privacy · Terms</span>
+</div>
+
+<script>
+const menuData = {
+  espresso: [
+    { name: "Single Origin Espresso", tag: "Espresso", desc: "A rotating single origin pulled as a classic espresso shot. Notes change monthly.", price: "R23", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" },
+    { name: "Flat White", tag: "Espresso", desc: "Double ristretto with microfoam milk in a 160ml tulip cup. Our house staple.", price: "R33", img: "https://images.unsplash.com/photo-1534040385115-33dcb3acba5b?w=600&q=80" },
+    { name: "Cortado", tag: "Espresso", desc: "Equal parts espresso and warm milk. No froth, no fuss — pure balance.", price: "R30", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80" },
+  ],
+  filter: [
+    { name: "Ethiopian Pour Over", tag: "Filter", desc: "Yirgacheffe washed, V60 brewed to order. Floral, light, extraordinary.", price: "R49", img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" },
+    { name: "Colombian Batch Brew", tag: "Filter", desc: "Huila natural, brewed fresh every 30 minutes. Smooth and approachable.", price: "R40", img: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" },
+    { name: "Aeropress Special", tag: "Filter", desc: "Our barista's current favourite recipe — changes weekly. Ask what's on.", price: "R40", img: "https://images.unsplash.com/photo-1572119865084-43c285814d63?w=600&q=80" },
+  ],
+  cold: [
+    { name: "Classic Cold Brew", tag: "Cold Brew", desc: "Steeped 18 hours, served over ice. Smooth, no bitterness whatsoever.", price: "R40", img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80" },
+    { name: "Cold Brew Tonic", tag: "Cold Brew", desc: "Cold brew over fever-tree tonic with an orange peel. Refreshing and bright.", price: "R40", img: "https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?w=600&q=80" },
+    { name: "Oat Milk Cold Latte", tag: "Cold Brew", desc: "Cold brew concentrate stirred into oat milk over ice. Creamy, barely sweet.", price: "R49", img: "https://images.unsplash.com/photo-1551030173-122aaaa8600a?w=600&q=80" },
+  ],
+  food: [
+    { name: "Almond Croissant", tag: "Pastry", desc: "Buttery, flaky, filled with frangipane and topped with toasted almonds.", price: "R32", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80" },
+    { name: "Smoked Chicken Bagel", tag: "Savoury", desc: "Smoked chicken, brie, basil pesto, heirloom tomatoes + balsamic drizzle.", price: "R99", img: "https://images.unsplash.com/photo-1553909489-cd47e0907980?w=600&q=80" },
+    { name: "Banana Bread", tag: "Baked", desc: "House-made daily. Dense, moist, a hint of cinnamon. Goes well with anything.", price: "R45", img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&q=80" },
+  ],
+};
+
+function filterMenu(category, btn) {
+  document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderMenu(category);
+}
+
+function renderMenu(category) {
+  const grid = document.getElementById('menu-grid');
+  grid.innerHTML = menuData[category].map(item => `
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="${item.img}" alt="${item.name}" loading="lazy"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-tag">${item.tag}</div>
+        <div class="menu-card-name">${item.name}</div>
+        <div class="menu-card-desc">${item.desc}</div>
+        <div class="menu-card-footer">
+          <span class="menu-price">${item.price}</span>
+          <button class="menu-add-btn" aria-label="Add ${item.name} to order">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+renderMenu('espresso');
+
+// Origin card interaction
+document.querySelectorAll('.origin-card').forEach(card => {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('.origin-card').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Newsletter button
+document.querySelector('.newsletter .btn-primary').addEventListener('click', function() {
+  const input = document.querySelector('.newsletter-input');
+  if (input.value && input.value.includes('@')) {
+    this.textContent = 'Subscribed ✓';
+    this.style.background = '#3B6D11';
+    input.value = '';
+    input.disabled = true;
+  } else {
+    input.style.outline = '2px solid #E24B4A';
+    setTimeout(() => input.style.outline = '', 2000);
+  }
+});
+</script>
+</body>
+</html>
